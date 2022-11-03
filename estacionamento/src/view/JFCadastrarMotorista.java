@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
+import model.bean.Motorista;
+import model.dao.MotoristaDAO;
 /**
  *
  * @author mateu
@@ -77,6 +78,11 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
         jTFSenha.setText("jTextField7");
 
         jBtnSalvar.setText("Salvar");
+        jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSalvarActionPerformed(evt);
+            }
+        });
 
         jBtnLimpar.setText("Limpar");
 
@@ -172,6 +178,22 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
+                                         
+      Motorista m = new Motorista();
+      MotoristaDAO dao = new MotoristaDAO();
+      
+      m.setNomeCompleto(jTFNomeCompleto.getText());
+      m.setGenero(jTFGenero.getText());
+      m.setRG(Integer.parseInt(jTFRG.getText()));
+      m.setCPF(Integer.parseInt(jTFCPF.getText()));
+      m.setEmail(jTFEmail.getText());
+      m.setSenha(jTFSenha.getText());
+      m.setCelular(Integer.parseInt(jTFCelular.getText()));
+      
+      dao.create(m);        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     /**
      * @param args the command line arguments

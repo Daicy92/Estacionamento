@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
+import javax.swing.table.DefaultTableModel;
+import model.dao.MotoristaDAO;
+import model.bean.Motorista;
 /**
  *
  * @author mateu
@@ -43,6 +45,11 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Listar Motoristas");
@@ -60,13 +67,13 @@ public class JFListarMotoristas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Motorista", "Nome", "Genero", "RG", "CPF", "Celular", "E-mail", "Senha"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -115,6 +122,28 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+    public void readJTable(){
+        DefaultTableModel modelo= (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        MotoristaDAO dao = new MotoristaDAO();
+        for(Motorista m: dao.read()){
+            modelo.addRow(new Object[]{
+            m.getIdMotorista(),
+            m.getNomeCompleto(),
+            m.getGenero(),
+            m.getRG(),
+            m.getCPF(),
+            m.getCelular(),
+            m.getEmail(),
+            m.getSenha(),
+            
+        });
+        
+        }
+    }
     /**
      * @param args the command line arguments
      */

@@ -41,7 +41,7 @@ public class VagaDAO {
       ResultSet rs = null;
       List<Vaga> vagas = new ArrayList<>();
       try{
-          stmt = con.prepareStatement("SELECT * FRON vaga;");
+          stmt = con.prepareStatement("SELECT * FROM vaga;");
           rs = stmt.executeQuery();
           while(rs.next()){
           Vaga v = new Vaga ();
@@ -60,5 +60,20 @@ public class VagaDAO {
       }
       return vagas;
   } 
+  public void delete(Vaga v){
+      Connection con = ConnectionFactory.getConnection();
+      PreparedStatement stmt = null;
+      try{
+      
+          stmt = con.prepareStatement("DELETE FROM vaga WHERE idVaga=?");
+          stmt.setInt(1,v.getIdVaga());
+          stmt.executeUpdate();
+          JOptionPane.showMessageDialog(null, "Vaga excluida com sucesso!");
+      }catch(SQLException e){
+          JOptionPane.showMessageDialog(null, "Erro ao excluir:" + e);
+      }finally{
+          ConnectionFactory.closeConnection(con, stmt);
+      }
+  }
    
 }
