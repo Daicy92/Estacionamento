@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author mateu
@@ -37,5 +41,35 @@ public class MotoristaDAO {
          ConnectionFactory.closeConnection(con, stmt);
      }
    }  
+    public List<Motorista> read(){
+      Connection con = ConnectionFactory.getConnection();
+      PreparedStatement stmt = null;
+      ResultSet rs = null;
+      List<Motorista> motorista = new ArrayList<>();
+      try{
+          stmt = con.prepareStatement("SELECT * FRON motorista;");
+          rs = stmt.executeQuery();
+          while(rs.next()){
+          Motorista m = new Motorista ();
+          m.setIdMotorista(rs.getInt("idMotorista"));
+          m.setNomeCompleto(rs.getString("nomeCompleto"));
+          m.setGenero(rs.getString("genero"));
+          m.setRG(rs.getInt("RG"));
+          m.setCPF(rs.getInt("CPF"));
+          m.setCelular(rs.getInt("celular"));
+          m.setEmail(rs.getString("email"));
+          m.setSenha(rs.getString("senha"));
+          
+          motorista.add(m);
+      }
+      }catch (SQLException e){
+          throw new RuntimeException("Erro de buscar os dados: ", e);
+          
+      }finally{
+          ConnectionFactory.closeConnection(con, stmt, rs);
+          
+      }
+      return motorista;
+  } 
     
 }

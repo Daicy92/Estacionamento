@@ -17,17 +17,6 @@ public class Motorista {
     private int celular ;
     private String email;
     private String senha;
-
-    public Motorista(int idMotorista, String nomeCompleto, String genero, int RG, int CPF, int celular, String email, String senha) {
-        this.idMotorista = idMotorista;
-        this.nomeCompleto = nomeCompleto;
-        this.genero = genero;
-        this.RG = RG;
-        this.CPF = CPF;
-        this.celular = celular;
-        this.email = email;
-        this.senha = senha;
-    }
     
 
     public int getIdMotorista() {
