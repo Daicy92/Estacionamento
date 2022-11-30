@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.dao.MotoristaDAO;
 import model.bean.Motorista;
+
 /**
  *
  * @author mateu
@@ -125,60 +127,56 @@ public class JFListarMotoristas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
-       if (jTMotorista.getSelectedRow() != -1) {
-            int motoristaSelecionado = (int)jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0);
-            JFAtualizarMotorista am = new JFAtualizarMotorista(motoristaSelecionado);
-            am.setVisible(true);
-            System.out.println(motoristaSelecionado);
-            
+        if (jTMotorista.getSelectedRow() != -1) {
+            int motoristaSelecionado = (int) jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0);
+            JFAtualizarMotorista av = new JFAtualizarMotorista(motoristaSelecionado);
+            av.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um motorista!", "ERRO", JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(null, "Selecione um motorista!",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
         readJTable();
-    
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-      readJTable();  // TODO add your handling code here:
+        readJTable();  // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-    if(jTMotorista.getSelectedRow()!= -1){
-      int opcao = JOptionPane.showConfirmDialog(null,"Deseja excluir o motorista selecionado?", "Exclusão", JOptionPane.YES_NO_OPTION);
-      if(opcao == 0){
-          MotoristaDAO dao = new MotoristaDAO();
-          Motorista m = new Motorista ();
-          m.setIdMotorista((int) jTMotorista.getValueAt(jTMotorista.getSelectedRow(),0));
-          dao.delete(m);
-      
-      }
-  }else{
-      JOptionPane.showMessageDialog(null,"Selecione um motorista!", "Erro", JOptionPane.ERROR_MESSAGE);
-  
-  }
+        if (jTMotorista.getSelectedRow() != -1) {
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o motorista selecionado?", "Exclusão", JOptionPane.YES_NO_OPTION);
+            if (opcao == 0) {
+                MotoristaDAO dao = new MotoristaDAO();
+                Motorista m = new Motorista();
+                m.setIdMotorista((int) jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0));
+                dao.delete(m);
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um motorista!", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        }
         readJTable();
-                           // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBtnExcluirActionPerformed
-    public void readJTable(){
-        DefaultTableModel modelo= (DefaultTableModel) jTMotorista.getModel();
+    public void readJTable() {
+        DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
         modelo.setNumRows(0);
         MotoristaDAO dao = new MotoristaDAO();
-        for(Motorista m: dao.read()){
+        for (Motorista m : dao.read()) {
             modelo.addRow(new Object[]{
-            m.getIdMotorista(),
-            m.getNomeCompleto(),
-            m.getGenero(),
-            m.getRG(),
-            m.getCPF(),
-            m.getCelular(),
-            m.getEmail(),
-            m.getSenha(),
-            
-        });
-        
+                m.getIdMotorista(),
+                m.getNomeCompleto(),
+                m.getGenero(),
+                m.getRG(),
+                m.getCPF(),
+                m.getCelular(),
+                m.getEmail(),
+                m.getSenha(),});
+
         }
     }
+
     /**
      * @param args the command line arguments
      */

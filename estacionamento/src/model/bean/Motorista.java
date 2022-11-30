@@ -9,10 +9,6 @@ package model.bean;
  * @author mateu
  */
 public class Motorista {
-
-    public static void setText(String valueOf) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     private int idMotorista;
     private String nomeCompleto;
     private String genero;

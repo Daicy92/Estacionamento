@@ -18,7 +18,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         initComponents();
         MotoristaDAO mdao = new MotoristaDAO();
         Motorista m = mdao.read(idMotorista);
-        Motorista.setText(String.valueOf(m.getIdMotorista()));
+        lblIdMotorista.setText(String.valueOf(m.getIdMotorista()));
         jTFNomeCompleto.setText(m.getNomeCompleto());
         jTFGenero.setText(m.getGenero());
         jTFCelular.setText(String.valueOf(m.getCelular()));
@@ -58,6 +58,8 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jBtnEmail = new javax.swing.JTextField();
+        lblIdMotorista = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +115,10 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
 
         jLabel2.setText("Nome Completo");
 
+        lblIdMotorista.setText("jLabel10");
+
+        jLabel10.setText("Id do Motorista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,9 +155,6 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jTFGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -162,13 +165,24 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFCelular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addComponent(lblIdMotorista)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblIdMotorista)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTFNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,7 +237,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
 
         Motorista m = new Motorista();
         MotoristaDAO dao = new MotoristaDAO();
-
+        m.setIdMotorista(Integer.parseInt(lblIdMotorista.getText()));
         m.setNomeCompleto(jTFNomeCompleto.getText());
         m.setGenero(jTFGenero.getText());
         m.setRG(Integer.parseInt(jTFRG.getText()));
@@ -282,6 +296,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     private javax.swing.JButton jBtnLimpar;
     private javax.swing.JButton jBtnSalvar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -296,5 +311,6 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNomeCompleto;
     private javax.swing.JTextField jTFRG;
     private javax.swing.JTextField jTFSenha;
+    private javax.swing.JLabel lblIdMotorista;
     // End of variables declaration//GEN-END:variables
 }
