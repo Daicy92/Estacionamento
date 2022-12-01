@@ -39,6 +39,7 @@ public class JFListarVagas extends javax.swing.JFrame {
         jBtnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Listar Vaga");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -128,9 +129,12 @@ public class JFListarVagas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCadastrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnCadastrarActionPerformed
+      JFCasdastrarVaga cv = new JFCasdastrarVaga();
+      cv.setVisible(true);
 
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBtnCadastrarActionPerformed
+   
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
   if(jTVaga.getSelectedRow()!= -1){
       int opcao = JOptionPane.showConfirmDialog(null,"Deseja excluir a vaga selecionada?", "Exclusão", JOptionPane.YES_NO_OPTION);

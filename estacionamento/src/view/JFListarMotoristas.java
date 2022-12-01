@@ -48,6 +48,7 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Listar Motorista");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -58,6 +59,11 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         jLabel1.setText("Listar Motoristas");
 
         jBtnCadastrar.setText("Cadastrar Motorista");
+        jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCadastrarActionPerformed(evt);
+            }
+        });
 
         jBtnEditar.setText("Editar Motorista");
         jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +165,11 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         readJTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jBtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCadastrarActionPerformed
+        JFCadastrarMotorista cm = new JFCadastrarMotorista();
+        cm.setVisible(true);
+    }//GEN-LAST:event_jBtnCadastrarActionPerformed
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
         modelo.setNumRows(0);
